@@ -51,6 +51,7 @@ build.tcga.ds <- function(geneExprId, rppaId=NULL, gisticId=NULL, cbioPrefix, is
     }
     rppa <- rppa[, grepl("TCGA",colnames(rppa))]
     colnames(rppa) <- gsub("(TCGA\\.\\w{2}\\.\\w{4}).*","\\1", colnames(rppa))
+    rppa <- rppa[gsub(".*(\\w)$","\\1", rownames(rppa))=="V",]
   }else{
     rppa <- NULL
   }
