@@ -51,6 +51,7 @@ e <- loadEntity("syn416789")
 ov.rppa <- read.table(paste(e$cacheDir,e$files,sep="/"),header=TRUE,row.names=1,comment="",quote="",sep="\t")
 ov.rppa <- ov.rppa[, grepl("TCGA",colnames(ov.rppa))]
 colnames(ov.rppa) <- gsub("(TCGA\\.\\w{2}\\.\\w{4}).*","\\1", colnames(ov.rppa))
+ov.rppa <- ov.rppa[gsub(".*(\\w)$","\\1", rownames(ov.rppa))=="V",]
 
 e <- loadEntity("syn1446135")
 ov.clinical <- read.table(paste(e$cacheDir,e$files,sep="/"),row.names=1,header=TRUE,comment="",quote="",sep="\t",as.is=T)

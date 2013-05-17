@@ -34,6 +34,7 @@ all(rownames(coad.rppa) == rownames(read.rppa))
 crc.rppa <- cbind(read.rppa, coad.rppa)
 crc.rppa <- crc.rppa[, grepl("TCGA",colnames(crc.rppa))]
 colnames(crc.rppa) <- gsub("(TCGA\\.\\w{2}\\.\\w{4}).*","\\1", colnames(crc.rppa))
+crc.rppa <- crc.rppa[gsub(".*(\\w)$","\\1", rownames(crc.rppa))=="V",]
 
 ####################################
 drug <- "PD0325901"

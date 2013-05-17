@@ -45,7 +45,7 @@ e <- loadEntity("syn464306")
 luad.rppa <- read.table(paste(e$cacheDir,e$files,sep="/"),header=TRUE,row.names=1,comment="",quote="",sep="\t")
 luad.rppa <- luad.rppa[, grepl("TCGA",colnames(luad.rppa))]
 colnames(luad.rppa) <- gsub("(TCGA\\.\\w{2}\\.\\w{4}).*","\\1", colnames(luad.rppa))
-
+luad.rppa <- luad.rppa[gsub(".*(\\w)$","\\1", rownames(luad.rppa))=="V",]
 
 ####################################
 
