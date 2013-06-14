@@ -30,6 +30,7 @@ brca.rppa <- brca.rppa[, grepl("TCGA",colnames(brca.rppa))]
 colnames(brca.rppa) <- gsub("(TCGA\\.\\w{2}\\.\\w{4}).*","\\1", colnames(brca.rppa))
 brca.rppa <- brca.rppa[gsub(".*(\\w)$","\\1", rownames(brca.rppa))=="V",]
 
+
 e <- loadEntity("syn1687590")
 brca.gistic <- as.matrix(read.table(paste(e$cacheDir,e$files,sep="/"),header=TRUE,row.names=1,comment="",quote="",sep="\t",as.is=TRUE)[,c(-1,-2)])
 colnames(brca.gistic) <- gsub("(TCGA\\.\\w{2}\\.\\w{4}).*","\\1", colnames(brca.gistic))
